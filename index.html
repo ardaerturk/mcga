@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$MCGA - TREMENDOUS GAINS INCOMING 🚀🔥</title>
+    <meta name="description" content="MCGA Coin - The MOST BASED token ever created! We're gonna pump SO HARD, even paper hands will HODL! 🚀">
+    <meta property="og:title" content="$MCGA - The Most BASED Token Ever Created 🔥">
+    <meta property="og:description" content="Join the most TREMENDOUS community in crypto! We have the best memes, don't we folks? 🐸">
+    <meta property="og:image" content="https://i.postimg.cc/vHbKSK8B/DALL-E-2024-11-20-16-37-48-A-luxurious-and-enhanced-design-for-the-MCGA-Coin-The-token-is-golden.webp">
+    <link rel="icon" href="https://i.postimg.cc/vHbKSK8B/DALL-E-2024-11-20-16-37-48-A-luxurious-and-enhanced-design-for-the-MCGA-Coin-The-token-is-golden.webp">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    @keyframes fomoFloat {
+        0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+        20% { transform: scale(1.2) rotate(10deg); opacity: 1; }
+        80% { transform: scale(1) rotate(0deg); opacity: 1; }
+        100% { transform: scale(0) rotate(10deg); opacity: 0; }
+    }
+
+    .price-change-up {
+        animation: priceUp 0.5s ease-out;
+        color: #00ff00;
+    }
+
+    .price-change-down {
+        animation: priceDown 0.5s ease-out;
+        color: #ff0000;
+    }
+
+    @keyframes priceUp {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+
+    @keyframes priceDown {
+        0% { transform: scale(1); }
+        50% { transform: scale(0.8); }
+        100% { transform: scale(1); }
+    }
+
+    .remaining-urgent {
+        animation: urgentPulse 1s infinite;
+    }
+
+    @keyframes urgentPulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+        :root {
+            --primary-red: #ff4040;
+            --cyber-blue: #00f7ff;
+            --meme-yellow: #ffd700;
+        }
+
+        * {
+            font-family: 'Press Start 2P', cursive;
+            cursor: none;
+        }
+
+        body {
+            background: #000;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* RGB Border Animation */
+        .rgb-border {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .rgb-border::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                #ff0000,
+                #ff7f00,
+                #ffff00,
+                #00ff00,
+                #0000ff,
+                #4b0082,
+                #8b00ff,
+                #ff0000
+            );
+            animation: rgb-spin 4s linear infinite;
+        }
+
+        .rgb-border::after {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            background: black;
+            border-radius: 8px;
+            z-index: 1;
+        }
+
+        @keyframes rgb-spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Rainbow Text */
+        .rainbow-text {
+            animation: rainbow 8s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% { color: red; }
+            14% { color: orange; }
+            28% { color: yellow; }
+            42% { color: green; }
+            57% { color: blue; }
+            71% { color: indigo; }
+            85% { color: violet; }
+            100% { color: red; }
+        }
+
+        /* Intense Shake Animation */
+        .shake-on-hover:hover {
+            animation: intense-shake 0.5s linear infinite;
+        }
+
+        @keyframes intense-shake {
+            0% { transform: translate(2px, 2px) rotate(0deg); }
+            10% { transform: translate(-2px, -3px) rotate(-2deg); }
+            20% { transform: translate(-4px, 0px) rotate(2deg); }
+            30% { transform: translate(4px, 3px) rotate(0deg); }
+            40% { transform: translate(2px, -2px) rotate(2deg); }
+            50% { transform: translate(-2px, 3px) rotate(-2deg); }
+            60% { transform: translate(-4px, 2px) rotate(0deg); }
+            70% { transform: translate(4px, 2px) rotate(-2deg); }
+            80% { transform: translate(-2px, -2px) rotate(2deg); }
+            90% { transform: translate(2px, 3px) rotate(0deg); }
+            100% { transform: translate(2px, -3px) rotate(-2deg); }
+        }
+
+        /* MLG Hitmarker Cursor */
+        .hitmarker {
+            width: 40px;
+            height: 40px;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+        }
+
+        /* Doge Wow */
+        .wow-text {
+            position: absolute;
+            font-size: 20px;
+            color: var(--meme-yellow);
+            pointer-events: none;
+            animation: float-away 2s forwards;
+        }
+
+        @keyframes float-away {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+            100% { transform: translate(var(--x), -100px) rotate(var(--r)); opacity: 0; }
+        }
+
+        /* Price Display Effects */
+        .price-container {
+            position: relative;
+            background: rgba(255, 0, 0, 0.1);
+            border: 2px solid var(--primary-red);
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 10px var(--primary-red); }
+            to { box-shadow: 0 0 20px var(--primary-red), 0 0 30px var(--cyber-blue); }
+        }
+
+        /* Meme Explosion */
+        .meme {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0;
+            animation: meme-float 3s ease-out forwards;
+        }
+
+        @keyframes meme-float {
+            0% { transform: scale(0) rotate(0deg); opacity: 1; }
+            100% { transform: scale(1.5) rotate(var(--rotation)); opacity: 0; }
+        }
+
+        /* Comic Effect Text */
+        .comic-boom {
+            position: absolute;
+            font-size: 40px;
+            color: var(--meme-yellow);
+            text-shadow: 3px 3px 0 #ff0000;
+            transform: rotate(var(--rotation));
+            animation: boom 0.5s ease-out forwards;
+        }
+
+        @keyframes boom {
+            0% { transform: scale(0); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 1; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+
+        /* Matrix Rain Effect */
+        #matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+    </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+    <canvas id="matrix-rain"></canvas>
+    <div id="particles-js"></div>
+    <img src="path_to_hitmarker.png" class="hitmarker hidden" id="hitmarker" alt="MLG">
+    <div id="meme-container"></div>
+    <audio id="airhorn" src="https://www.myinstants.com/media/sounds/mlg-airhorn.mp3"></audio>
+    <audio id="wow" src="https://www.myinstants.com/media/sounds/doge-wow.mp3"></audio>
+
+    <main class="relative z-10 min-h-screen">
+        <div class="container mx-auto px-4 py-12">
+            <!-- Top Banner -->
+            <div class="text-center mb-8">
+                <div class="rainbow-text text-xl animate-bounce">
+                    🚀 HODL 🚀 HODL 🚀 HODL 🚀
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="max-w-6xl mx-auto text-center">
+                <!-- Logo -->
+                <div class="mb-12 relative">
+                    <img src="https://i.postimg.cc/vHbKSK8B/DALL-E-2024-11-20-16-37-48-A-luxurious-and-enhanced-design-for-the-MCGA-Coin-The-token-is-golden.webp" alt="MCGA Bull Logo" 
+                         class="w-80 h-80 mx-auto shake-on-hover"
+                         onclick="triggerMemeExplosion(event)">
+                    <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                        <span class="text-4xl rainbow-text">VERY BULLISH!</span>
+                    </div>
+                </div>
+
+                <!-- Title -->
+                <h1 class="text-6xl font-bold mb-8 rainbow-text shake-on-hover">
+                    Make Crypto Great Again
+                </h1>
+
+                <!-- Price Display -->
+                <div class="rgb-border p-8 mb-12 relative">
+                    <div class="price-container relative z-10 p-8">
+                        <h2 class="text-4xl mb-4 rainbow-text">ROAD TO 100K</h2>
+                        <div id="price-display" class="text-6xl font-bold mb-2 glow-text">
+                            Loading...
+                        </div>
+                        <div id="remaining-display" class="text-2xl text-red-400">
+                            Calculating...
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buy Button -->
+                <!-- <div class="mb-12">
+                    <a href="https://pump.fun/coin/HCXHXcMSAiziLKP5MoZtPvPLFLftF27mASNVgQCNpump" 
+                       class="inline-block rgb-border p-1"
+                       onclick="triggerBuyEffects(event)">
+                        <div class="bg-red-600 hover:bg-red-700 px-12 py-6 rounded relative z-10">
+                            <span class="text-3xl font-bold rainbow-text">APE IN NOW 🦍</span>
+                        </div>
+                    </a>
+                </div> -->
+
+                <!-- Social Links -->
+                <div class="flex justify-center gap-6">
+                    <a href="https://x.com/MakeCryptoGA" 
+                       class="rgb-border p-1 shake-on-hover">
+                        <div class="bg-black p-4 relative z-10">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // MLG Hitmarker
+        document.addEventListener('click', (e) => {
+            const hitmarker = document.getElementById('hitmarker');
+            hitmarker.style.left = (e.clientX - 20) + 'px';
+            hitmarker.style.top = (e.clientY - 20) + 'px';
+            hitmarker.classList.remove('hidden');
+            
+            // Play airhorn
+            const airhorn = document.getElementById('airhorn');
+            airhorn.currentTime = 0;
+            airhorn.play();
+
+            // Remove hitmarker after animation
+            setTimeout(() => hitmarker.classList.add('hidden'), 100);
+        });
+
+        // Matrix Rain Effect
+        const canvas = document.getElementById('matrix-rain');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = '❤️🚀💎🐸👑MCGABTC$';
+        const drops = [];
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+
+        for(let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+
+
+
+
+
+
+
+        // Price Updates with FOMO Effects
+let lastPrice = 0;
+let fomoPhrases = [
+    "🚀 PUMPING!",
+    "💎 DIAMOND HANDS!",
+    "🔥 IT'S HAPPENING!",
+    "⚡ DONT MISS OUT!",
+    "🌙 MOON SOON!",
+    "💪 STRONG BULLS!",
+    "🐋 WHALES BUYING!",
+    "🎯 NEXT TARGET 100K!",
+    "📈 BULLISH AF!",
+    "🦍 APES TOGETHER STRONG!"
+];
+
+function createFloatingNumber(element, number, isPositive) {
+    const floater = document.createElement('div');
+    floater.textContent = (isPositive ? '+' : '') + number.toLocaleString();
+    floater.style.position = 'absolute';
+    floater.style.left = '50%';
+    floater.style.transform = 'translateX(-50%)';
+    floater.style.color = isPositive ? '#00ff00' : '#ff0000';
+    floater.style.fontSize = '24px';
+    floater.style.fontWeight = 'bold';
+    floater.style.opacity = '1';
+    floater.style.transition = 'all 1s ease-out';
+    floater.style.zIndex = '1000';
+    
+    element.appendChild(floater);
+    
+    // Animate floating number
+    requestAnimationFrame(() => {
+        floater.style.transform = `translateX(-50%) translateY(-${50}px)`;
+        floater.style.opacity = '0';
+    });
+
+    setTimeout(() => floater.remove(), 1000);
+}
+
+function createFOMOAlert() {
+    const alert = document.createElement('div');
+    alert.className = 'fomo-alert';
+    alert.textContent = fomoPhrases[Math.floor(Math.random() * fomoPhrases.length)];
+    alert.style.position = 'fixed';
+    alert.style.left = Math.random() * (window.innerWidth - 200) + 'px';
+    alert.style.top = Math.random() * (window.innerHeight - 100) + 'px';
+    alert.style.background = 'rgba(255, 0, 0, 0.9)';
+    alert.style.color = 'white';
+    alert.style.padding = '10px 20px';
+    alert.style.borderRadius = '5px';
+    alert.style.fontWeight = 'bold';
+    alert.style.zIndex = '1000';
+    alert.style.animation = 'fomoFloat 2s forwards';
+
+    document.body.appendChild(alert);
+    setTimeout(() => alert.remove(), 2000);
+}
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#ff4040';
+            ctx.font = fontSize + 'px arial';
+
+            for(let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 33);
+
+        // Meme Explosion
+        function createMeme(x, y) {
+            const memes = ['💎', '🚀', '🐸', '👑', '💰', '🔥'];
+            const meme = document.createElement('div');
+            meme.className = 'meme';
+            meme.textContent = memes[Math.floor(Math.random() * memes.length)];
+            meme.style.left = x + 'px';
+            meme.style.top = y + 'px';
+            meme.style.setProperty('--rotation', (Math.random() * 360) + 'deg');
+            document.body.appendChild(meme);
+            setTimeout(() => meme.remove(), 3000);
+        }
+
+        function triggerMemeExplosion(event) {
+            for(let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createMeme(event.clientX, event.clientY);
+                }, i * 50);
+            }
+        }
+
+        // Price Updates with Effects
+        async function updateBitcoinPrice() {
+            try {
+                const response = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json');
+                const data = await response.json();
+                const price = parseFloat(data.bpi.USD.rate.replace(',', ''));
+                const priceDisplay = document.getElementById('price-display');
+                const remainingDisplay = document.getElementById('remaining-display');
+        
+                // Calculate price change
+                const priceChange = price - lastPrice;
+                const isPositive = priceChange > 0;
+        
+                // Update price with animation
+                priceDisplay.textContent = `$${price.toLocaleString()}`;
+                priceDisplay.className = isPositive ? 'price-change-up' : 'price-change-down';
+        
+                // Create floating number for price change
+                if (lastPrice !== 0) {
+                    createFloatingNumber(priceDisplay.parentElement, priceChange, isPositive);
+                }
+        
+                // Update remaining amount
+                const remaining = 100000 - price;
+                remainingDisplay.textContent = `ONLY $${remaining.toLocaleString()} TO GO! 🚀`;
+                remainingDisplay.className = 'remaining-urgent';
+        
+                // Random FOMO alerts
+                if (Math.random() < 0.3) { // 30% chance each update
+                    createFOMOAlert();
+                }
+        
+                // Play sound effects based on price movement
+                if (lastPrice !== 0) {
+                    const audio = new Audio(isPositive ? 'path_to_up_sound.mp3' : 'path_to_down_sound.mp3');
+                    audio.volume = 0.3;
+                    audio.play().catch(() => {}); // Catch and ignore autoplay restrictions
+                }
+        
+                // Trigger meme explosion on significant price changes
+                if (Math.abs(priceChange) > 100) {
+                    triggerMemeExplosion({
+                        clientX: window.innerWidth / 2,
+                        clientY: window.innerHeight / 2
+                    });
+                }
+        
+                lastPrice = price;
+        
+            } catch (error) {
+                console.error('Error fetching Bitcoin price:', error);
+            }
+        }
+
+        // Initialize
+        updateBitcoinPrice();
+        setInterval(updateBitcoinPrice, 1000);
+
+        // Add event listener for visibility change to manage updates
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        clearInterval(priceUpdateInterval);
+    } else {
+        updateBitcoinPrice();
+        priceUpdateInterval = setInterval(updateBitcoinPrice, 1000);
+    }
+});
+
+        // Buy Button Effects
+        function triggerBuyEffects(event) {
+            event.preventDefault();
+            triggerMemeExplosion(event);
+            
+            // Play multiple sounds
+            const airhorn = document.getElementById('airhorn');
+            const wow = document.getElementById('wow');
+            airhorn.play();
+            setTimeout(() => wow.play(), 200);
+
+            // Add comic effects
+            const texts = ['WAGMI!', 'TO THE MOON!', 'BASED!', 'LFG!'];
+            texts.forEach((text, i) => {
+                setTimeout(() => {
+                    const comic = document.createElement('div');
+                    comic.className = 'comic-boom';
+                    comic.textContent = text;
+                    comic.style.left = (event.clientX + (Math.random() * 200 - 100)) + 'px';
+                    comic.style.top = (event.clientY + (Math.random() * 200 - 100)) + 'px';
+                    document.body.appendChild(comic);
+                    setTimeout(() => comic.remove(), 1000);
+                }, i * 200);
+            });
+
+            // Redirect after effects
+            setTimeout(() => {
+                window.location.href = event.target.closest('a').href;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
