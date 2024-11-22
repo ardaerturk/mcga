@@ -38,6 +38,18 @@
         color: #ff0000;
     }
 
+    @keyframes celebrate {
+        0% { transform: translate(-50%, -50%) scale(0); }
+        50% { transform: translate(-50%, -50%) scale(1.2); }
+        100% { transform: translate(-50%, -50%) scale(1); }
+    }
+
+    @keyframes mourn {
+        0% { transform: translate(-50%, -50%) scale(1); }
+        50% { transform: translate(-50%, -50%) rotate(10deg); }
+        100% { transform: translate(-50%, -50%) rotate(-10deg); }
+    }
+
     @keyframes priceUp {
         0% { transform: scale(1); }
         50% { transform: scale(1.2); }
@@ -476,6 +488,19 @@ setInterval(drawMatrix, 33);
                 const response = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json');
                 const data = await response.json();
                 const price = parseFloat(data.bpi.USD.rate.replace(',', ''));
+
+                // Check for 100k threshold crossing
+        if (price >= 100000 && !currentlyAbove100k) {
+            currentlyAbove100k = true;
+            celebrate100k();
+            has100kBeenReached = true;
+        } else if (price < 100000 && currentlyAbove100k) {
+            currentlyAbove100k = false;
+            if (has100kBeenReached) {
+                mourn100kLoss();
+            }
+        }
+
                 const priceDisplay = document.getElementById('price-display');
                 const remainingDisplay = document.getElementById('remaining-display');
         
@@ -569,6 +594,125 @@ document.addEventListener('visibilitychange', () => {
             }, 1000);
         }
 
+
+
+        let has100kBeenReached = false;
+let currentlyAbove100k = false;
+
+function celebrate100k() {
+    // Massive meme explosion
+    for(let i = 0; i < 50; i++) {
+        setTimeout(() => {
+            createMeme(
+                Math.random() * window.innerWidth,
+                Math.random() * window.innerHeight
+            );
+        }, i * 100);
+    }
+
+    // Create massive celebratory text
+    const celebration = document.createElement('div');
+    celebration.style.position = 'fixed';
+    celebration.style.top = '50%';
+    celebration.style.left = '50%';
+    celebration.style.transform = 'translate(-50%, -50%)';
+    celebration.style.fontSize = '80px';
+    celebration.style.fontWeight = 'bold';
+    celebration.style.color = '#00ff00';
+    celebration.style.textShadow = '0 0 20px #00ff00';
+    celebration.style.zIndex = '9999';
+    celebration.style.animation = 'celebrate 2s forwards';
+    celebration.innerHTML = `
+        🚀 $100K ACHIEVED! 🚀<br>
+        TREMENDOUS VICTORY!<br>
+        WE TOLD YOU SO!
+    `;
+    document.body.appendChild(celebration);
+
+    // Play celebration sounds
+    const airhorn = document.getElementById('airhorn');
+    airhorn.play();
+
+    setTimeout(() => celebration.remove(), 3000);
+}
+
+function mourn100kLoss() {
+    // Create sad text
+    const mourning = document.createElement('div');
+    mourning.style.position = 'fixed';
+    mourning.style.top = '50%';
+    mourning.style.left = '50%';
+    mourning.style.transform = 'translate(-50%, -50%)';
+    mourning.style.fontSize = '60px';
+    mourning.style.fontWeight = 'bold';
+    mourning.style.color = '#ff0000';
+    mourning.style.textShadow = '0 0 20px #ff0000';
+    mourning.style.zIndex = '9999';
+    mourning.style.animation = 'mourn 2s forwards';
+    mourning.innerHTML = `
+        😭 PAPER HANDS! 😭<br>
+        WEAK SAUCE!<br>
+        BUY THE DIP!
+    `;
+    document.body.appendChild(mourning);
+
+    setTimeout(() => mourning.remove(), 3000);
+}
+
+
+
+// Add this to your JavaScript
+let testPrice = 99900; // Starting price just below 100k
+let testMode = false;
+
+// Test function to simulate price changes
+function testPriceThreshold() {
+    testMode = true;
+    
+    // Override the actual price fetch function
+    updateBitcoinPrice = function() {
+        testPrice += 50; // Increment by 50 each time
+        if (testPrice > 100200) { // After reaching 100,200, start decreasing
+            testPrice = 99800; // Reset to test again
+        }
+
+        const price = testPrice;
+        const priceDisplay = document.getElementById('price-display');
+        const remainingDisplay = document.getElementById('remaining-display');
+
+        // Calculate price change
+        const priceChange = price - lastPrice;
+        const isPositive = priceChange > 0;
+
+        // Update price with animation
+        priceDisplay.textContent = `$${price.toLocaleString()}`;
+        priceDisplay.className = isPositive ? 'price-change-up' : 'price-change-down';
+
+        // Create floating number for price change
+        if (lastPrice !== 0) {
+            createFloatingNumber(priceDisplay.parentElement, priceChange, isPositive);
+        }
+
+        // Check for 100k threshold crossing
+        if (price >= 100000 && !currentlyAbove100k) {
+            currentlyAbove100k = true;
+            celebrate100k();
+            has100kBeenReached = true;
+        } else if (price < 100000 && currentlyAbove100k) {
+            currentlyAbove100k = false;
+            if (has100kBeenReached) {
+                mourn100kLoss();
+            }
+        }
+
+        // Update remaining amount
+        const remaining = 100000 - price;
+        remainingDisplay.textContent = `ONLY $${remaining.toLocaleString()} TO GO! 🚀`;
+        remainingDisplay.className = 'remaining-urgent';
+
+        lastPrice = price;
+    };
+}
 
 
   window.dataLayer = window.dataLayer || [];
